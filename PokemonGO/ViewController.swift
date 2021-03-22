@@ -12,6 +12,7 @@ import MapKit
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapa: MKMapView!
     var gerenciadorLocalizacao = CLLocationManager()
+    var contador = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,26 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         gerenciadorLocalizacao.delegate = self
         gerenciadorLocalizacao.requestWhenInUseAuthorization()
         gerenciadorLocalizacao.startUpdatingLocation()
+        
+    }
+    
+    //metodo que centraliza o usuario na tela
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if contador < 3 {
+            if let coordenadas = gerenciadorLocalizacao.location?.coordinate {
+                let regiao = MKCoordinateRegion(center: coordenadas, latitudinalMeters: 200, longitudinalMeters: 200)
+                mapa.setRegion(regiao, animated: true)
+            
+            }
+        
+        }
+        if contador < 5 {
+            contador += 1
+            
+        }else {
+            gerenciadorLocalizacao.stopUpdatingLocation()
+            
+        }
         
     }
     
