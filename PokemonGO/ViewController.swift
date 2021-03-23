@@ -22,6 +22,24 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         gerenciadorLocalizacao.requestWhenInUseAuthorization()
         gerenciadorLocalizacao.startUpdatingLocation()
         
+        //Exibir Pokemons
+        Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { (timer) in
+            if let coordenadas = self.gerenciadorLocalizacao.location?.coordinate {
+                let anotacao = MKPointAnnotation()
+                
+                let latAleatoria = (Double(arc4random_uniform(400)) - 200 ) / 100000.0
+                let lonAleatoria = (Double(arc4random_uniform(400)) - 200 ) / 100000.0
+                
+                anotacao.coordinate = coordenadas
+                anotacao.coordinate.latitude += latAleatoria
+                anotacao.coordinate.longitude += lonAleatoria
+                
+                self.mapa.addAnnotation(anotacao)
+                
+            }
+            
+        }
+        
     }
     
     //metodo que centraliza o usuario na tela
