@@ -27,16 +27,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     //metodo que centraliza o usuario na tela
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if contador < 3 {
-            if let coordenadas = gerenciadorLocalizacao.location?.coordinate {
-                let regiao = MKCoordinateRegion(center: coordenadas, latitudinalMeters: 200, longitudinalMeters: 200)
-                mapa.setRegion(regiao, animated: true)
-            
-            }
-        
-        }
-        if contador < 5 {
+            self.centralizar()
             contador += 1
-            
+        
         }else {
             gerenciadorLocalizacao.stopUpdatingLocation()
             
@@ -66,5 +59,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
     }
 
+    func centralizar() {
+        if let coordenadas = gerenciadorLocalizacao.location?.coordinate {
+            let regiao = MKCoordinateRegion(center: coordenadas, latitudinalMeters: 200, longitudinalMeters: 200)
+            mapa.setRegion(regiao, animated: true)
+            
+        }
+        
+    }
+    
+    @IBAction func centralizaJogador(_ sender: Any) {
+        self.centralizar()
+        
+    }
+    
+    @IBAction func abrirPokedex(_ sender: Any) {
+    }
+    
 }
 

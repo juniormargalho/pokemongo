@@ -21,13 +21,39 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-5p-UQa">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fu-jg-LoG">
+                                <rect key="frame" x="315" y="30" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="ruj-e4-4Q4"/>
+                                    <constraint firstAttribute="height" constant="50" id="yLd-yQ-21n"/>
+                                </constraints>
+                                <state key="normal" image="compass"/>
+                                <connections>
+                                    <action selector="centralizaJogador:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FC5-Dt-tdx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqL-TC-Jj9">
+                                <rect key="frame" x="162.5" y="607" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="A0h-Y0-kDL"/>
+                                    <constraint firstAttribute="width" constant="50" id="vDU-7B-tKr"/>
+                                </constraints>
+                                <state key="normal" image="pokeball"/>
+                                <connections>
+                                    <action selector="abrirPokedex:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TyU-5K-2mD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eqL-TC-Jj9" secondAttribute="bottom" constant="10" id="2iX-Uc-DR1"/>
                             <constraint firstItem="Ueh-5p-UQa" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="3We-kH-eus"/>
                             <constraint firstItem="Ueh-5p-UQa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AcB-jw-p5t"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8fu-jg-LoG" secondAttribute="trailing" constant="10" id="Kou-52-QSg"/>
                             <constraint firstItem="Ueh-5p-UQa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mtn-DF-CyI"/>
                             <constraint firstItem="Ueh-5p-UQa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PVd-Uz-M11"/>
+                            <constraint firstItem="eqL-TC-Jj9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="n3g-Ke-KLz"/>
+                            <constraint firstItem="8fu-jg-LoG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="xZA-SK-cbD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -40,4 +66,8 @@
             <point key="canvasLocation" x="132" y="66"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="compass" width="40" height="40"/>
+        <image name="pokeball" width="40" height="40"/>
+    </resources>
 </document>
