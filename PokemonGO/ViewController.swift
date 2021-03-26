@@ -23,7 +23,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         gerenciadorLocalizacao.startUpdatingLocation()
         
         //Exibir Pokemons
-        Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (timer) in
             if let coordenadas = self.gerenciadorLocalizacao.location?.coordinate {
                 let anotacao = MKPointAnnotation()
                 
@@ -39,6 +39,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
             
         }
+        
+    }
+    
+    //exibi imagens no lugar das anotacoes
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let anotacaoView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        if annotation is MKUserLocation {
+            anotacaoView.image =  UIImage(named: "player.png")
+            
+        }else {
+            anotacaoView.image =  UIImage(named: "pikachu-2.png")
+            
+        }
+        var frame = anotacaoView.frame
+        frame.size.height = 40
+        frame.size.width = 40
+        anotacaoView.frame = frame
+        
+        return anotacaoView
         
     }
     

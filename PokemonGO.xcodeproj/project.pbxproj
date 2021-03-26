@@ -14,6 +14,7 @@
 		6346094F26078936000CB4A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6346094E26078936000CB4A2 /* Assets.xcassets */; };
 		6346095226078936000CB4A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6346095026078936000CB4A2 /* LaunchScreen.storyboard */; };
 		6346095B26078A17000CB4A2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6346095A26078A17000CB4A2 /* MapKit.framework */; };
+		63C1E055260E64C70067B8C8 /* CoreDataPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1E054260E64C70067B8C8 /* CoreDataPokemon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		6346095126078936000CB4A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6346095326078936000CB4A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6346095A26078A17000CB4A2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		63C1E054260E64C70067B8C8 /* CoreDataPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPokemon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				6346095026078936000CB4A2 /* LaunchScreen.storyboard */,
 				6346095326078936000CB4A2 /* Info.plist */,
 				6346094B26078935000CB4A2 /* PokemonGO.xcdatamodeld */,
+				63C1E054260E64C70067B8C8 /* CoreDataPokemon.swift */,
 			);
 			path = PokemonGO;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C1E055260E64C70067B8C8 /* CoreDataPokemon.swift in Sources */,
 				6346094726078935000CB4A2 /* ViewController.swift in Sources */,
 				6346094D26078935000CB4A2 /* PokemonGO.xcdatamodeld in Sources */,
 				6346094526078935000CB4A2 /* AppDelegate.swift in Sources */,
