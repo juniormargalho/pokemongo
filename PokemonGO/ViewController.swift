@@ -13,6 +13,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapa: MKMapView!
     var gerenciadorLocalizacao = CLLocationManager()
     var contador = 0
+    var coreDataPokemon: CoreDataPokemon!
+    var pokemons: [Pokemon] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         gerenciadorLocalizacao.delegate = self
         gerenciadorLocalizacao.requestWhenInUseAuthorization()
         gerenciadorLocalizacao.startUpdatingLocation()
+        
+        //recuperar pokemons
+        self.coreDataPokemon = CoreDataPokemon()
+        self.pokemons = self.coreDataPokemon.recuperarTodosPokemons()
         
         //Exibir Pokemons
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (timer) in
