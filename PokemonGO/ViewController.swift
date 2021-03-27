@@ -31,12 +31,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //Exibir Pokemons
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (timer) in
             if let coordenadas = self.gerenciadorLocalizacao.location?.coordinate {
-                let anotacao = MKPointAnnotation()
+                let totalPokemons = UInt32(self.pokemons.count)
+                let indicePokemonAleatorio = arc4random_uniform(totalPokemons)
+                let pokemon = self.pokemons[Int(indicePokemonAleatorio)]
+                
+                let anotacao = PokemonAnotacao(coordenadas: coordenadas, pokemon: pokemon)
                 
                 let latAleatoria = (Double(arc4random_uniform(400)) - 200 ) / 100000.0
                 let lonAleatoria = (Double(arc4random_uniform(400)) - 200 ) / 100000.0
                 
-                anotacao.coordinate = coordenadas
                 anotacao.coordinate.latitude += latAleatoria
                 anotacao.coordinate.longitude += lonAleatoria
                 
@@ -55,7 +58,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             anotacaoView.image =  UIImage(named: "player.png")
             
         }else {
-            anotacaoView.image =  UIImage(named: "pikachu-2.png")
+            let pokemon = (annotation as! PokemonAnotacao).pokemon
+            anotacaoView.image =  UIImage(named: pokemon.nomeImagem!)
             
         }
         var frame = anotacaoView.frame
@@ -104,7 +108,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     func centralizar() {
         if let coordenadas = gerenciadorLocalizacao.location?.coordinate {
-            let regiao = MKCoordinateRegion(center: coordenadas, latitudinalMeters: 200, longitudinalMeters: 200)
+            let regiao = MKCoordinateRegion(center: coordenadas, latitudinalMeters: 400, longitudinalMeters: 400)
             mapa.setRegion(regiao, animated: true)
             
         }
