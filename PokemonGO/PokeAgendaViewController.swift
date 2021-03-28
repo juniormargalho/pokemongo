@@ -9,9 +9,16 @@
 import UIKit
 
 class PokeAgendaViewController: UIViewController {
+    var pokemonsCapturados: [Pokemon] = []
+    var pokemonsNaoCapturados: [Pokemon] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let coreDataPokemon = CoreDataPokemon()
+        self.pokemonsCapturados = coreDataPokemon.recuperarPokemonsCapturados(capturado: true)
+        self.pokemonsNaoCapturados = coreDataPokemon.recuperarPokemonsCapturados(capturado: false)
+        
+        print(String(self.pokemonsNaoCapturados.count))
 
     }
     
