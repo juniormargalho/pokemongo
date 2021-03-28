@@ -18,7 +18,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mapa.delegate = self
         gerenciadorLocalizacao.delegate = self
         gerenciadorLocalizacao.requestWhenInUseAuthorization()
@@ -48,6 +47,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
             
         }
+    }
+    
+    //captura o pokemon selecionado
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let anotacao = view.annotation
+        let pokemon = (anotacao as! PokemonAnotacao).pokemon
+        mapView.deselectAnnotation(anotacao, animated: true)
+        if anotacao is MKUserLocation {
+            return
+        }
+        self.coreDataPokemon.salvarPokemon(pokemon: pokemon)
         
     }
     
@@ -68,7 +78,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         anotacaoView.frame = frame
         
         return anotacaoView
-        
     }
     
     //metodo que centraliza o usuario na tela
@@ -81,7 +90,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             gerenciadorLocalizacao.stopUpdatingLocation()
             
         }
-        
     }
     
     //metodo que verifica se o usuario autorizou o acesso a localizacao
@@ -103,7 +111,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             present(alertController, animated: true, completion: nil)
             
         }
-        
     }
 
     func centralizar() {
@@ -112,7 +119,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             mapa.setRegion(regiao, animated: true)
             
         }
-        
     }
     
     @IBAction func centralizaJogador(_ sender: Any) {
