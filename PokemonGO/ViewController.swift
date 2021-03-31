@@ -53,12 +53,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let anotacao = view.annotation
         let pokemon = (anotacao as! PokemonAnotacao).pokemon
+        
         mapView.deselectAnnotation(anotacao, animated: true)
         if anotacao is MKUserLocation {
             return
         }
-        self.coreDataPokemon.salvarPokemon(pokemon: pokemon)
-        
+        if let coordAnotacao = anotacao?.coordinate {
+            let regiao = MKCoordinateRegion(center: coordAnotacao, latitudinalMeters: 400, longitudinalMeters: 400)
+            mapa.setRegion(regiao, animated: true)
+        }
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+            if let coord = self.gerenciadorLocalizacao.location?.coordinate {
+                if self.mapa.visibleMapRect.contains(MKMapPoint(coord)) {
+                    print("voce pode capturar")
+                    self.coreDataPokemon.salvarPokemon(pokemon: pokemon)
+                }else {
+                    print("voce nao pode capturar")
+                }
+            }
+        }
     }
     
     //exibi imagens no lugar das anotacoes
